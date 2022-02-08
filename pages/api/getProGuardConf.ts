@@ -9,10 +9,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     });
   }
   res.status(200).send(`
-# Keep Tweaker so the game can actually launch
--keep class com.evieclient.mixins.EvieTweaker {
-   <fields>; 
-   <methods>; 
-}
+  # Keep Tweaker so the game can actually launch
+  -keep class com.evieclient.mixins.EvieTweaker {
+     <fields>; 
+     <methods>; 
+  }
+  
+  -injars build/libs/EvieClientClean-1.0.0.jar
+  -outjars build/libs/EvieClient-1.0.0.jar
 `);
 }
