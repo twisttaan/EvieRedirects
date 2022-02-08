@@ -14,6 +14,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
      <fields>; 
      <methods>; 
   }
+
+  -libraryjars "build/output/lib/*.jar"
   
   -injars build/libs/EvieClientClean-1.0.0.jar
   -outjars build/libs/EvieClient-1.0.0.jar
