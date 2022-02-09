@@ -4,12 +4,13 @@ type PlayerCosmetics = {
   activeCosmetics?: [
     {
       id: string;
+      type: string;
     }
   ];
   dev?: boolean;
   eviePlus?: boolean;
   media?: boolean;
-  message: string;
+  message?: string;
 };
 
 type Database = {
@@ -25,23 +26,23 @@ const fakeDatabase: Database = {
       activeCosmetics: [
         {
           id: "SimpleEvieCape",
+          type: "cape",
         },
       ],
       dev: true,
       eviePlus: false,
       media: false,
-      message: "",
     },
     "49f49c44-7f79-4631-903b-34ba4156458a": {
       activeCosmetics: [
         {
           id: "SkdiCape",
+          type: "cape",
         },
       ],
       dev: false,
       eviePlus: false,
       media: false,
-      message: "",
     },
   },
 };
