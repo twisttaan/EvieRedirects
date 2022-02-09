@@ -14,7 +14,7 @@ export default async function handler(
     return;
   } else {
     // fiind the cape texture for the given id in the folder assets/textures/capes
-    const capeTexture = `./assets/textures/capes/${id}.png`;
+    const capeTexture = `./pages/api/assets/textures/capes/${id}.png`;
 
     // if the cape texture is not found, return a 404
     if (!fs.existsSync(capeTexture)) {
