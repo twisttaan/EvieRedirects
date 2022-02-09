@@ -44,6 +44,18 @@ const fakeDatabase: Database = {
       eviePlus: false,
       media: false,
     },
+
+    "3aa49c28-a95a-41b2-abc3-a73ee1613662": {
+      activeCosmetics: {
+        cape: {
+          id: "SimpleEvieCape",
+          type: "cape",
+        },
+      },
+      dev: false,
+      eviePlus: false,
+      media: false,
+    },
   },
 };
 
