@@ -4,6 +4,8 @@ type refresh_token = {
   refreshToken?: string;
   accessToken?: string;
   error?: string;
+  username?: string;
+  uuid?: string;
 };
 
 export default async function handler(
@@ -30,16 +32,19 @@ export default async function handler(
       account.accessToken = accessToken;
       account.refreshToken = refresh;
       await account.refresh();
+      await account.getProfile();
+
+      res.status(200).json({
+        refreshToken: account.refreshToken,
+        accessToken: account.accessToken,
+        username: account.username,
+        uuid: account.uuid,
+      });
     } catch (e: any) {
       res.status(400).json({
         error: "Something went wrong",
       });
       return;
     }
-
-    res.status(200).json({
-      refreshToken: account.refreshToken,
-      accessToken: account.accessToken,
-    });
   }
 }
