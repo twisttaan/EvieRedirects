@@ -31,8 +31,22 @@ export default async function handler(
       "http://localhost:9998/auth/microsoft"
     );
     const account = new MicrosoftAccount();
-    await account.authFlow(code);
-    await account.getProfile();
+    try {
+      await account.authFlow(code);
+      await account.getProfile();
+    } catch (e: any) {
+      if (e.message === "User don't have minecraft on his account!") {
+        res.status(400).json({
+          error: "User doesn't have minecraft on their account!",
+        });
+        return;
+      }
+      res.status(400).json({
+        error: "Something went wrong",
+      });
+      return;
+    }
+
     res.status(200).json({
       token_type: "bearer",
       expires_in: 86400,
