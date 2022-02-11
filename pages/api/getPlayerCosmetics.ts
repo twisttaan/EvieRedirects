@@ -73,14 +73,14 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<PlayerCosmetics>
 ) {
-  const uuid = req.query.uuid as string;
-  if (!uuid) {
+  const name = req.query.name as string;
+  if (!name) {
     res.status(400).json({
       message: "No uuid provided",
     });
     return;
   } else {
-    const playerCosmetics = fakeDatabase.players[uuid];
+    const playerCosmetics = fakeDatabase.players[name];
     if (!playerCosmetics) {
       res.status(400).json({
         message: "No player cosmetics found",
