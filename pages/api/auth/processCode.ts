@@ -9,6 +9,7 @@ type oauth_token = {
   user_id?: string;
   foci?: string;
   error?: string;
+  username?: string;
 };
 
 export default async function handler(
@@ -36,6 +37,7 @@ export default async function handler(
       refresh_token: account.refreshToken,
       user_id: account.uuid,
       foci: "1",
+      username: account.username,
     });
   }
 }
