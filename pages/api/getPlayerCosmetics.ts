@@ -22,7 +22,7 @@ type Database = {
 // Fake Database until we get a real one
 const fakeDatabase: Database = {
   players: {
-    "f5e658ea-fe2a-4ea7-8df1-d5c08af78a69": {
+    twisttaan: {
       activeCosmetics: {
         cape: {
           id: "SimpleEvieCape",
@@ -33,7 +33,7 @@ const fakeDatabase: Database = {
       eviePlus: false,
       media: false,
     },
-    "49f49c44-7f79-4631-903b-34ba4156458a": {
+    skdi: {
       activeCosmetics: {
         cape: {
           id: "SkdiCape",
@@ -44,7 +44,7 @@ const fakeDatabase: Database = {
       eviePlus: false,
       media: false,
     },
-    "c98187a9-e17b-3f48-8a33-882e62d18d19": {
+    billy: {
       activeCosmetics: {
         cape: {
           id: "SimpleEvieCape",
