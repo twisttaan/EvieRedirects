@@ -2,6 +2,7 @@ import { MicrosoftAccount, MicrosoftAuth } from "minecraft-auth";
 import type { NextApiRequest, NextApiResponse } from "next";
 type refresh_token = {
   refresh_token?: string;
+  access_token?: string;
   error?: string;
 };
 
@@ -10,6 +11,7 @@ export default async function handler(
   res: NextApiResponse<refresh_token>
 ) {
   const refresh = req.query.refresh as string;
+  const accessToken = req.query.access as string;
   if (!refresh) {
     res.status(400).json({
       error: "No refresh token provided",
@@ -25,6 +27,7 @@ export default async function handler(
     );
     const account = new MicrosoftAccount();
     try {
+      account.accessToken = accessToken;
       account.refreshToken = refresh;
       await account.refresh();
     } catch (e: any) {
@@ -36,6 +39,7 @@ export default async function handler(
 
     res.status(200).json({
       refresh_token: account.refreshToken,
+      access_token: account.accessToken,
     });
   }
 }
