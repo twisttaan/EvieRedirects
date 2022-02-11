@@ -23,9 +23,13 @@ export default async function handler(
     });
     return;
   } else {
-    let appID = "79d63740-a433-4f6d-8c3d-19f997d868b8";
-    let appSecret = process.env.AZURE_SECRET;
-    MicrosoftAuth.setup(appID, appSecret, null);
+    const appID = "79d63740-a433-4f6d-8c3d-19f997d868b8";
+    const appSecret = process.env.AZURE_SECRET;
+    MicrosoftAuth.setup(
+      appID,
+      appSecret,
+      "http://localhost:9998/auth/microsoft"
+    );
     const account = new MicrosoftAccount();
     await account.authFlow(code);
     await account.getProfile();
