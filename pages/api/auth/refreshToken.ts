@@ -1,8 +1,8 @@
 import { MicrosoftAccount, MicrosoftAuth } from "minecraft-auth";
 import type { NextApiRequest, NextApiResponse } from "next";
 type refresh_token = {
-  refresh_token?: string;
-  access_token?: string;
+  refreshToken?: string;
+  accessToken?: string;
   error?: string;
 };
 
@@ -38,8 +38,8 @@ export default async function handler(
     }
 
     res.status(200).json({
-      refresh_token: account.refreshToken,
-      access_token: account.accessToken,
+      refreshToken: account.refreshToken,
+      accessToken: account.accessToken,
     });
   }
 }
