@@ -1,93 +1,48 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { PrismaClient } from "@prisma/client";
+import axios, { AxiosResponse } from "axios";
 
-type PlayerCosmetics = {
-  activeCosmetics?: {
-    cape: {
-      id: string;
-      type: string;
-    };
-  };
-  dev?: boolean;
-  eviePlus?: boolean;
-  media?: boolean;
-  message?: string;
-};
+const prisma = new PrismaClient();
 
-type Database = {
-  players: {
-    [uuid: string]: PlayerCosmetics;
-  };
-};
-
-// Fake Database until we get a real one
-const fakeDatabase: Database = {
-  players: {
-    twisttaan: {
-      activeCosmetics: {
-        cape: {
-          id: "SimpleEvieCape",
-          type: "cape",
-        },
-      },
-      dev: true,
-      eviePlus: false,
-      media: false,
-    },
-    skdi: {
-      activeCosmetics: {
-        cape: {
-          id: "SkdiCape",
-          type: "cape",
-        },
-      },
-      dev: false,
-      eviePlus: false,
-      media: false,
-    },
-    billy: {
-      activeCosmetics: {
-        cape: {
-          id: "SimpleEvieCape",
-          type: "cape",
-        },
-      },
-      dev: false,
-      eviePlus: false,
-      media: false,
-    },
-    "db209190-0290-4652-b42a-7aa0f89eeb90": {
-      activeCosmetics: {
-        cape: {
-          id: "SimpleEvieCape",
-          type: "cape",
-        },
-      },
-      dev: false,
-      eviePlus: false,
-      media: false,
-    },
-  },
-};
-
-export default function handler(
+export default async function handle(
   req: NextApiRequest,
-  res: NextApiResponse<PlayerCosmetics>
+  res: NextApiResponse
 ) {
-  const name = req.query.name as string;
-  if (!name) {
-    res.status(400).json({
-      message: "No uuid provided",
-    });
-    return;
+  const username = req.query.name as string;
+
+  if (req.method === "GET") {
+    handleGET(username, res);
   } else {
-    const playerCosmetics = fakeDatabase.players[name];
-    if (!playerCosmetics) {
-      res.status(400).json({
-        message: "No player cosmetics found",
-      });
-      return;
+    throw new Error(
+      `The HTTP ${req.method} method is not supported at this route.`
+    );
+  }
+}
+
+// GET /api/getPlayerCosmetics?name=<username>
+async function handleGET(username: string, res: NextApiResponse<any>) {
+  const lookup: AxiosResponse = await axios.get(
+    `https://api.mojang.com/users/profiles/minecraft/${username}`
+  );
+
+  if (lookup.status === 200) {
+    const uuid = lookup.data.id;
+    const player = await prisma.playerCosmetics.findFirst({
+      where: {
+        uuid: String(uuid),
+      },
+    });
+
+    if (player) {
+      res.status(200).json(player);
     } else {
-      res.status(200).json(playerCosmetics);
+      res.status(404).json({
+        error: "Player not found",
+      });
     }
+  } else {
+    res.status(404).json({
+      error: "Player not found",
+    });
   }
 }

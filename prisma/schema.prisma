@@ -1,0 +1,24 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["mongoDb"]
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model CapeTextures {
+    id      String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+    capeID  String @unique
+    texture String
+}
+
+model PlayerCosmetics {
+    id              String  @id @default(dbgenerated()) @map("_id") @db.ObjectId
+    uuid            String  @unique
+    activeCosmetics Json
+    dev             Boolean
+    eviePlus        Boolean
+    media           Boolean
+}
