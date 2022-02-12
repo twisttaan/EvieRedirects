@@ -3,6 +3,14 @@ import { PrismaClient } from "@prisma/client";
 import axios, { AxiosResponse } from "axios";
 import { withSentry } from "@sentry/nextjs";
 
+type PlayerCosmetics = {
+  activeCosmetics?: any;
+  dev?: boolean;
+  eviePlus?: boolean;
+  media?: boolean;
+  message?: string;
+};
+
 const prisma = new PrismaClient();
 
 async function handle(req: NextApiRequest, res: NextApiResponse) {
@@ -18,7 +26,10 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
 }
 
 // GET /api/getPlayerCosmetics?name=<username>
-async function handleGET(username: string, res: NextApiResponse<any>) {
+async function handleGET(
+  username: string,
+  res: NextApiResponse<PlayerCosmetics>
+) {
   const lookup: AxiosResponse = await axios.get(
     `https://api.mojang.com/users/profiles/minecraft/${username}`
   );
@@ -32,15 +43,20 @@ async function handleGET(username: string, res: NextApiResponse<any>) {
     });
 
     if (player) {
-      res.status(200).json(player);
+      res.status(200).json({
+        activeCosmetics: player.activeCosmetics,
+        dev: player.dev,
+        eviePlus: player.eviePlus,
+        media: player.media,
+      });
     } else {
       res.status(404).json({
-        error: "Player not found",
+        message: "Player not found",
       });
     }
   } else {
     res.status(404).json({
-      error: "Player not found",
+      message: "Player not found",
     });
   }
 }
