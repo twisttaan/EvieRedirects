@@ -1,13 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
-import axios, { AxiosResponse } from "axios";
+import { withSentry } from "@sentry/nextjs";
 
 const prisma = new PrismaClient();
 
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handle(req: NextApiRequest, res: NextApiResponse) {
   const capeID = req.query.id as string;
 
   if (req.method === "GET") {
@@ -19,7 +16,6 @@ export default async function handle(
   }
 }
 
-// GET /api/getPlayerCosmetics?name=<username>
 async function handleGET(capeID: string, res: NextApiResponse<any>) {
   const capeB64 = await prisma.capeTextures.findFirst({
     where: {
@@ -37,3 +33,5 @@ async function handleGET(capeID: string, res: NextApiResponse<any>) {
     });
   }
 }
+
+export default withSentry(handle);

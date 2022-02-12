@@ -1,13 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { PrismaClient } from "@prisma/client";
 import axios, { AxiosResponse } from "axios";
+import { withSentry } from "@sentry/nextjs";
 
 const prisma = new PrismaClient();
 
-export default async function handle(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+async function handle(req: NextApiRequest, res: NextApiResponse) {
   const username = req.query.name as string;
 
   if (req.method === "GET") {
@@ -46,3 +44,5 @@ async function handleGET(username: string, res: NextApiResponse<any>) {
     });
   }
 }
+
+export default withSentry(handle);
