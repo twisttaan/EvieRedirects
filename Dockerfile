@@ -11,11 +11,9 @@ COPY yarn.lock /usr/src/app
 # Production use node instead of root
 # USER node
 
-RUN yarn install --production
-
 COPY . /usr/src/app
 
-RUN yarn build
+RUN yarn && yarn build
 
 EXPOSE 3000
 CMD [ "yarn", "start" ]
