@@ -16,6 +16,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(200).json({
         error: true,
         message: "Looks like something went wrong here. :-)",
+        try: "You could try evie.pw/api/downloads/v2/latest instead.",
       });
     });
 }
