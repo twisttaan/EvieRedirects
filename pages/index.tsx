@@ -1,18 +1,21 @@
 import type { NextPage } from "next";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useRef } from "react";
-import OnTheListSubscribe from "../components/OnTheListSubscribe";
+import { useState } from "react";
+import CallToAction from "../components/CallToAction";
+import Download from "../components/Download";
+import DownloadModal from "../components/DownloadModal";
+import Features from "../components/Features";
+import Nav from "../components/nav";
 
 const Home: NextPage = () => {
-  const router = useRouter();
-  const ref = router.query.ref as string;
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="bg-black text-white">
-      <div className="flex flex-col items-center justify-center h-screen">
-        <OnTheListSubscribe refCode={ref} />
-      </div>
+      <DownloadModal open={open} setOpen={setOpen} />
+      <Nav />
+      <Download open={open} setOpen={setOpen} />
+      <Features />
+      <CallToAction open={open} setOpen={setOpen} />
     </div>
   );
 };
