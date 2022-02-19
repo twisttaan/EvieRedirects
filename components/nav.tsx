@@ -1,10 +1,9 @@
-import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
-import Link from "next/link";
+import { Disclosure } from "@headlessui/react";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useRouter } from "next/dist/client/router";
-import React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 const navigation = [{ name: "Home", href: "/index", current: false }];
 
 function classNames(...classes: string[]) {
