@@ -17,9 +17,10 @@ async function handle(req: NextApiRequest, res: NextApiResponse) {
 }
 
 async function handleGET(capeID: string, res: NextApiResponse<any>) {
-  const capeB64 = await prisma.capeTextures.findFirst({
+  const capeB64 = await prisma.cosmetic.findFirst({
     where: {
-      capeID: String(capeID),
+      type: "cape",
+      id: capeID,
     },
   });
 

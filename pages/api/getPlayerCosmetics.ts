@@ -36,7 +36,7 @@ async function handleGET(
 
   if (lookup.status === 200) {
     const uuid = lookup.data.id;
-    const player = await prisma.playerCosmetics.findFirst({
+    const player = await prisma.player.findFirst({
       where: {
         uuid: String(uuid),
       },
