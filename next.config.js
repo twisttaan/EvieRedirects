@@ -48,6 +48,12 @@ const nextConfig = {
         permanent: false, // Once https://tristancamejo.com/ is finished, this will be permanent
       },
       {
+        source: "/urcutewallpapers",
+        destination:
+          "https://gist.github.com/twisttaan/4b4163185bf6f803bba8f5677202b0dd",
+        permanent: false,
+      },
+      {
         source: "/tsmp",
         destination: "https://tristansmp.com",
         permanent: true, // Once https://tristancamejo.com/ is finished, this will be permanent
