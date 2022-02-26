@@ -18,6 +18,11 @@ const nextConfig = {
         permanent: false, // Migrating eviebot.rocks soon to this repo
       },
       {
+        source: "/botgh",
+        destination: "https://github.com/twisttaan/Evie",
+        permanent: false,
+      },
+      {
         source: "/team",
         destination: "https://github.com/EvieClient",
         permanent: false,
