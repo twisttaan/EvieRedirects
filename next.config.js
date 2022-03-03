@@ -19,7 +19,7 @@ const nextConfig = {
       },
       {
         source: "/botgh",
-        destination: "https://github.com/twisttaan/Evie",
+        destination: "https://github.com/TeamEvie/Evie",
         permanent: false,
       },
       {
@@ -51,12 +51,6 @@ const nextConfig = {
         source: "/tristan",
         destination: "https://github.com/twisttaan",
         permanent: false, // Once https://tristancamejo.com/ is finished, this will be permanent
-      },
-      {
-        source: "/urcutewallpapers",
-        destination:
-          "https://gist.github.com/twisttaan/4b4163185bf6f803bba8f5677202b0dd",
-        permanent: false,
       },
       {
         source: "/tsmp",

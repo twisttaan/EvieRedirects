@@ -9,7 +9,6 @@
 html,
 body {
   font-family: "Poppins", sans-serif;
-  @apply bg-gray-900 text-white;
 }
 
 /* Write your own custom component styles here */

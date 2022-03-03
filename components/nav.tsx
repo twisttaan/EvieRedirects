@@ -1,103 +1,64 @@
-import { Disclosure } from "@headlessui/react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { useRouter } from "next/dist/client/router";
-import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-const navigation = [{ name: "Home", href: "/index", current: false }];
+import DarkMode from "./DarkMode";
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
-}
 function Nav() {
-  const router = useRouter();
-
-  React.useEffect(() => {
-    // get current router path and set it as the only nav item active
-    const currentPath = router.pathname;
-    const currentNavItem = navigation.find(
-      (navItem) => navItem.href === currentPath
-    );
-    if (currentNavItem) {
-      currentNavItem.current = true;
-    } else {
-      navigation[0].current = true;
-    }
-  }, [router.pathname]);
-
   return (
-    <Disclosure as="nav" className="bg-gray-800">
-      {({ open }) => (
-        <>
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-between h-16">
-              <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="sr-only">Open main menu</span>
-                  {open ? (
-                    <XIcon className="block h-6 w-6" aria-hidden="true" />
-                  ) : (
-                    <MenuIcon className="block h-6 w-6" aria-hidden="true" />
-                  )}
-                </Disclosure.Button>
-              </div>
-              <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="hidden sm:block sm:ml-6">
-                  <Image
-                    className="flex space-x-4"
-                    src="/SmallEvie.png"
-                    alt="Evie Logo"
-                    width={50}
-                    height={50}
-                  />
-                </div>
-                <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <Link href={item.href} key={item.name}>
-                        <a
-                          className={classNames(
-                            item.current
-                              ? "bg-gray-900 text-white"
-                              : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                            "px-3 py-2 rounded-md text-sm font-medium"
-                          )}
-                          aria-current={item.current ? "page" : undefined}
-                        >
-                          {item.name}
-                        </a>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <section className="w-full px-8 text-gray-700 bg-white dark:bg-gray-800">
+      <div className="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
+        <div className="relative flex flex-col md:flex-row">
+          <a
+            href="#_"
+            className="flex items-center mb-5 font-medium dark:text-white text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0"
+          >
+            <span className="mx-auto text-xl font-bold leading-none dark:text-white text-gray-900 select-none">
+              Evie
+            </span>
+          </a>
+          <nav className="flex flex-wrap items-center mb-5 text-base md:mb-0 md:pl-8 md:ml-8 md:border-l md:border-gray-200">
+            <a
+              href="#_"
+              className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400"
+            >
+              Home
+            </a>
+            <a
+              href="#_"
+              className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400"
+            >
+              Projects
+            </a>
+            <a
+              href="#_"
+              className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400"
+            >
+              Blog
+            </a>
+            <a
+              href="#_"
+              className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400"
+            >
+              Support
+            </a>
+          </nav>
+        </div>
+        <div className="inline-flex items-center ml-5 space-x-6 lg:justify-end">
+          <DarkMode />
 
-          <Disclosure.Panel className="sm:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  {item.name}
-                </Disclosure.Button>
-              ))}
-            </div>
-          </Disclosure.Panel>
-        </>
-      )}
-    </Disclosure>
+          <a
+            href="#"
+            className="text-base font-medium leading-6 text-gray-600 whitespace-no-wrap transition duration-150 ease-in-out hover:text-gray-900 dark:text-white dark:hover:text-gray-400"
+          >
+            Sign in
+          </a>
+          <a
+            href="#"
+            className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+          >
+            Sign up
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
