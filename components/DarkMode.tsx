@@ -1,29 +1,34 @@
 import { useState, useEffect } from "react";
 
 export default function DarkMode() {
-  const [darkMode, setDarkMode] = useState<boolean | undefined>(undefined);
+  const [theme, setTheme] = useState(
+    typeof window !== "undefined" ? localStorage.theme : "dark"
+  );
+  const colorTheme = theme === "dark" ? "light" : "dark";
+
   useEffect(() => {
-    setDarkMode(document.documentElement.classList.contains("dark"));
-  }, []);
-  useEffect(() => {
-    if (darkMode) {
-      window.document.documentElement.classList.add("dark");
-      localStorage.setItem("darkMode", "true");
-    } else {
-      window.document.documentElement.classList.remove("dark");
-      localStorage.setItem("darkMode", "false");
+    const root = window.document.documentElement;
+
+    root.classList.remove(colorTheme);
+    root.classList.add(theme);
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", theme);
     }
-  }, [darkMode]);
+  }, [colorTheme, theme]);
+
   const onClick = () => {
-    setDarkMode(!darkMode);
+    setTheme(colorTheme);
   };
+
+  const isDark = theme === "dark";
 
   return (
     <a onClick={onClick} className="cursor-pointer">
-      {darkMode ? (
+      {isDark ? (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 text-white"
+          className="h-5 w-5 text-blue-500"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
