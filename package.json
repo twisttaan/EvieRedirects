@@ -2,7 +2,7 @@
   "name": "eviewp",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port=3001",
     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint"
@@ -23,6 +23,7 @@
     "minecraft-auth": "^1.0.29",
     "next": "12.1.0",
     "react": "17.0.2",
+    "react-cookie": "^4.1.1",
     "react-country-flag": "^3.0.2",
     "react-dom": "17.0.2"
   },
