@@ -13,6 +13,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/invite",
+        destination: "https://discord.com/api/oauth2/authorize?client_id=807543126424158238&permissions=1461257808918&scope=bot%20applications.commands",
+        permanent: true,
+      },
+      {
         source: "/bot",
         destination: "https://eviebot.rocks",
         permanent: false, // Migrating eviebot.rocks soon to this repo
