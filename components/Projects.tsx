@@ -42,7 +42,7 @@ export default function Projects() {
                         {project.name}
                       </span>
                     </h1>
-                    <p className="mx-auto text-base text-gray-400 sm:max-w-md lg:text-xl md:max-w-3xl">
+                    <p className="mx-auto text-base dark:text-gray-400 text-black sm:max-w-md lg:text-xl md:max-w-3xl">
                       {project.description}
                     </p>
                     <div className="relative flex flex-col sm:flex-row sm:space-x-4">
