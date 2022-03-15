@@ -3,15 +3,12 @@ export default function EvieHero() {
     <section className="px-2  md:px-0">
       <div className="container items-center max-w-6xl px-5 mx-auto space-y-6 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-left text-gray-900 dark:text-white sm:text-5xl md:text-6xl md:text-center">
-          <span className="block">
-            Welcome to{" "}
-            <span className="block mt-1 text-purple-500 lg:inline lg:mt-0">
-              Team Evie
-            </span>
+          <span className="block mt-1 text-purple-500 lg:inline lg:mt-0">
+            Team Evie
           </span>
         </h1>
         <p className="w-full mx-auto text-base text-left text-gray-500 dark:text-white sm:text-lg lg:text-2xl md:max-w-3xl md:text-center">
-          we make things
+          creators of projects centered around Discord.
         </p>
         <div className="relative flex flex-col justify-center md:flex-row md:space-x-4">
           <a
