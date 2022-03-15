@@ -1,16 +1,17 @@
 import type { NextPage } from "next";
-import EvieHero from "../components/EvieHero";
 import Footer from "../components/Footer";
+import Space from "../components/info/Space";
 import Nav from "../components/nav";
 
-const Home: NextPage = () => {
+const About: NextPage = () => {
   return (
     <>
       <Nav />
-      <EvieHero />
+      <Space />
+
       <Footer />
     </>
   );
 };
 
-export default Home;
+export default About;
