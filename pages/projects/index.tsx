@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { useState } from "react";
-import EvieHero from "../components/EvieHero";
-import Footer from "../components/Footer";
-import Nav from "../components/nav";
+import Footer from "../../components/Footer";
+import Nav from "../../components/nav";
+import Projects from "../../components/Projects";
 
 const Home: NextPage = () => {
   const [open, setOpen] = useState(false);
@@ -10,7 +10,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Nav />
-      <EvieHero />
+      <Projects />
       <Footer />
     </>
   );

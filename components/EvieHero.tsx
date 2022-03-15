@@ -1,6 +1,6 @@
 export default function EvieHero() {
   return (
-    <section className="px-2 pt-32 md:px-0">
+    <section className="px-2  md:px-0">
       <div className="container items-center max-w-6xl px-5 mx-auto space-y-6 text-center">
         <h1 className="text-4xl font-extrabold tracking-tight text-left text-gray-900 dark:text-white sm:text-5xl md:text-6xl md:text-center">
           <span className="block">
