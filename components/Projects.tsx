@@ -29,7 +29,7 @@ export default function Projects() {
     );
   }
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="md:grid grid-cols-2 gap-4">
       {projects ? (
         projects.map((project) => (
           <section className="px-2 mb-8 md:px-0" key={project.id}>
@@ -40,10 +40,6 @@ export default function Projects() {
                     <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl">
                       <span className="block text-indigo-600 xl:inline">
                         {project.name}
-                      </span>
-                      <br />
-                      <span className="text-3xl block ">
-                        {project.description}
                       </span>
                     </h1>
                     <p className="mx-auto text-base text-gray-400 sm:max-w-md lg:text-xl md:max-w-3xl">
