@@ -4,12 +4,12 @@ import DarkMode from "./DarkMode";
 function Nav() {
   return (
     <>
-      <section className="w-full px-8 text-gray-700 bg-white dark:bg-[#23272a]">
+      <section className="w-full px-8 text-gray-700 bg-[#23272a]">
         <div className="container flex flex-col flex-wrap items-center justify-between py-5 mx-auto md:flex-row max-w-7xl">
           <div className="relative flex flex-col md:flex-row">
             <Link href="/">
-              <a className="flex items-center mb-5 font-medium dark:text-white text-gray-900 lg:w-auto lg:items-center lg:justify-center md:mb-0">
-                <span className="mx-auto text-xl font-bold leading-none dark:text-white text-gray-900 select-none">
+              <a className="flex items-center mb-5 font-medium text-white lg:w-auto lg:items-center lg:justify-center md:mb-0">
+                <span className="mx-auto text-xl font-bold leading-none text-white select-none">
                   Team Evie
                 </span>
               </a>
@@ -18,7 +18,7 @@ function Nav() {
               <Link href="/">
                 <a
                   href="#_"
-                  className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400"
+                  className="mr-5 font-medium leading-6 text-gray-60 text-white hover:text-gray-400"
                 >
                   Home
                 </a>
@@ -26,7 +26,7 @@ function Nav() {
               <Link href="/projects">
                 <a
                   href="#_"
-                  className="mr-5 font-medium leading-6 text-gray-600 hover:text-gray-900 dark:text-white dark:hover:text-gray-400"
+                  className="mr-5 font-medium leading-6 text-gray-60 text-white hover:text-gray-400"
                 >
                   Projects
                 </a>

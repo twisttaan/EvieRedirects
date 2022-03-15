@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function DarkMode() {
   const [theme, setTheme] = useState(
@@ -37,7 +37,7 @@ export default function DarkMode() {
       ) : (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 text-black"
+          className="h-5 w-5 text-white"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
