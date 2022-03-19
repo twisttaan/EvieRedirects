@@ -10,7 +10,7 @@ export default function Projects() {
       .get("https://api.github.com/users/TeamEvie/repos")
       .then((res) => {
         const filteredRepos = res.data.filter(
-          (repo: Repo) => repo.name !== ".github"
+          (repo: Repo) => !repo.archived && repo.name !== ".github"
         );
 
         setProjects(filteredRepos);
