@@ -32,6 +32,11 @@ const nextConfig = {
         destination: "https://discord.com/api/oauth2/authorize?client_id=961142622636871781&permissions=3146752&scope=bot%20applications.commands",
         permanent: false,
       },
+      {
+        source: "/jwrld-privacy",
+        destination: "https://gist.github.com/twisttaan/5299919a4f760b71df87ec15c3beb85b",
+        permanent: false,
+      },
 
       /*
        * Personal Link Shortcuts
